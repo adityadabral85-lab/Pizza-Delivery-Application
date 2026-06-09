@@ -1,28 +1,14 @@
 {
-  "name": "pizza-delivery-server",
+  "name": "pizza-delivery-application",
   "version": "1.0.0",
-  "type": "module",
-  "main": "src/server.js",
+  "private": true,
   "scripts": {
-    "dev": "nodemon src/server.js",
-    "start": "node src/server.js",
-    "seed": "node src/seed.js"
-  },
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "express-rate-limit": "^7.5.0",
-    "helmet": "^8.0.0",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.9.5",
-    "morgan": "^1.10.0",
-    "nodemailer": "^6.9.16",
-    "razorpay": "^2.9.5",
-    "validator": "^13.12.0"
+    "dev": "npm run build --prefix client && concurrently \"npm run dev --prefix server\" \"npm run preview --prefix client -- --host 0.0.0.0\"",
+    "client:dev": "npm run dev --prefix client",
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client",
+    "seed": "npm run seed --prefix server"
   },
   "devDependencies": {
-    "nodemon": "^3.1.9"
+    "concurrently": "^9.1.2"
   }
 }
